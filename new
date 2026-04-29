@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DR kW Example</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <style>
+    body { background:#070d1a; color:#eef3ff; font-family:sans-serif; }
+    .card { padding:20px; background:#0d1523; border-radius:12px; margin:20px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>kW reduction vs baseline (per site)</h2>
+    <canvas id="kwChart" height="200"></canvas>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('kwChart').getContext('2d');
+    const chart = new Chart(ctx, {
+      type: 'bar',
+       {
+        labels: ['A - Office Tower','B - Hotel','C - Retail','D - Campus','E - Plant'],
+        datasets: [
+          { label:'Baseline kW', [850,740,620,1020,960], backgroundColor:'rgba(255,255,255,0.12)' },
+          { label:'Reduced kW',  [520,410,330,590,640], backgroundColor:'#add540' }
+        ]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { labels: { color:'#eef3ff' } } },
+        scales: {
+          x: { stacked: true, ticks: { color:'#eef3ff' } },
+          y: { stacked: true, ticks: { color:'#eef3ff' } }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
