@@ -1,0 +1,17 @@
+</div>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+
+      kwChart.data.labels = vizData.sites.map(s => s.name);
+      kwChart.data.datasets[0].data = vizData.sites.map(s => s.baseline_kw);
+      kwChart.data.datasets[1].data = vizData.sites.map(s => s.reduced_kw);
+      kwChart.update();
+    }
+
+    renderTable();
+  </script>
+</body>
+</html>
